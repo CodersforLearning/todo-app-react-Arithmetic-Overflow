@@ -17,11 +17,19 @@ const TaskList = ({ className, taskList, deleteTaskIndex }) => {
         Tasks Remaining:
       </h1>
       
-      <ul>
+      <ul
+        style={{
+          'textAlign': 'left',
+          'display': 'inline-block'
+        }}
+      >
         {
           tasks.map(
             (taskTitle, i) =>
-              <li key={i + taskTitle} onClick={() => deleteTaskIndex(i)}>
+              <li 
+                key={i + taskTitle}
+                onClick={() => deleteTaskIndex(i)}
+              >
                 <Task taskTitle={taskTitle} />
               </li>
           )
