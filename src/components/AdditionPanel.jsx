@@ -10,9 +10,7 @@ const AdditionPanel = ({ className, appendTask }) => {
 
 	const addTaskOnEnter = event => {
 		if (event.keyCode === 13) {
-			// addTask();
-			appendTask(taskTitle);
-			setTaskTitle('');
+			addTask();
 		}
 	}
 

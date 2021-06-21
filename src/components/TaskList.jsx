@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Task from './Task';
 
-const TaskList = ({ className, taskList }) => {
+const TaskList = ({ className, taskList, deleteTaskIndex }) => {
   const [tasks, setTasks] = useState(taskList);
 
   useEffect(
@@ -20,7 +20,7 @@ const TaskList = ({ className, taskList }) => {
         {
           tasks.map(
             (taskTitle, i) =>
-              <li key={i + taskTitle}>
+              <li key={i + taskTitle} onClick={() => deleteTaskIndex(i)}>
                 <Task taskTitle={taskTitle} />
               </li>
           )
