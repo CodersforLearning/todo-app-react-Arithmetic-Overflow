@@ -4,6 +4,7 @@ import Task from './Task';
 
 const TaskList = ({ className, taskList, deleteTaskIndex }) => {
   const [tasks, setTasks] = useState(taskList);
+  const [strikethrough, setStrikethrough] = useState(taskList.map(_ => false));
 
   useEffect(
     () => {setTasks(taskList)},
