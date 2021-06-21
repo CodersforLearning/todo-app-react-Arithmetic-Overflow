@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Task from './Task';
 
-const TaskList = ({ className, taskList, setTaskList }) => {
+const TaskList = ({ className, taskList }) => {
   const [tasks, setTasks] = useState(taskList);
 
   useEffect(
@@ -11,25 +11,22 @@ const TaskList = ({ className, taskList, setTaskList }) => {
   );
 
   return (
-    <ul>
-      {
-        tasks.map(
-          (taskTitle, i) =>
-            <li key={i + taskTitle}>
-              <Task taskTitle={taskTitle} />
-            </li>
-        )
-      }
-
-      <li key='second addition button'>
-        <button onClick={
-          () => setTaskList([...taskList, 'second test addition'])
+    <div>
+      <h1>
+        Tasks Remaining:
+      </h1>
+      
+      <ul>
+        {
+          tasks.map(
+            (taskTitle, i) =>
+              <li key={i + taskTitle}>
+                <Task taskTitle={taskTitle} />
+              </li>
+          )
         }
-        >
-          Add here too
-        </button>
-      </li>
-    </ul>
+      </ul>
+    </div>
   );
 };
 
