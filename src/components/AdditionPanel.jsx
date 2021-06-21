@@ -14,17 +14,23 @@ const AdditionPanel = ({ className, appendTask }) => {
 		}
 	}
 
+	const style = {
+		'fontSize': '28pt',
+		'marginTop': '0'
+	}
+
     return (
         <span>
         	<input
         		type='text'
-        		placeholder='type here to add tasks'
+        		placeholder='Type Here To Add Tasks'
         		onKeyDown={event => addTaskOnEnter(event)}
         		onChange={event => setTaskTitle(event.target.value)}
         		value={taskTitle}
+        		style={style}
         	/>
 
-        	<button onClick={addTask}>
+        	<button onClick={addTask} style={style}>
         		Add Task
         	</button>
         </span>

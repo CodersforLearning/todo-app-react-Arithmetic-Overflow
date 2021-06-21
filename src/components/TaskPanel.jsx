@@ -9,7 +9,13 @@ const TaskPanel = ({ className }) => {
 
   const appendTask = newTask => setTaskList([...taskList, newTask]);
 
-  const deleteTaskIndex = i => setTaskList([...taskList.slice(0, i), ...taskList.slice(i+1)]);
+  const deleteTaskIndex = i => 
+    setTaskList(
+      [
+        ...taskList.slice(0, i),
+        ...taskList.slice(i+1)
+      ]
+    );
 
   return (
     <>
