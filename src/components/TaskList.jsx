@@ -4,7 +4,6 @@ import Task from './Task';
 
 const TaskList = ({ className, taskList, deleteTaskIndex }) => {
   const [tasks, setTasks] = useState(taskList);
-  const [strikethrough, setStrikethrough] = useState(taskList.map(_ => false));
 
   useEffect(
     () => {setTasks(taskList)},
@@ -16,7 +15,7 @@ const TaskList = ({ className, taskList, deleteTaskIndex }) => {
       Tasks Remaining:
     </h1>;
 
-  if(tasks.length == 0) {
+  if(tasks.length === 0) {
     return (
       <div>
       {header}
