@@ -23,3 +23,8 @@ git clone https://github.com/Arithmetic-Overflow/todo.git`
 cd todo
 npm start
 ```
+
+## Usage
+Type a task in the input box and press enter or click the `Add Task` button in order to add a task. Your displayed tasks will show up on the screen.
+
+Whenver you are finished with a task you can click it and it will be removed from the task list.
