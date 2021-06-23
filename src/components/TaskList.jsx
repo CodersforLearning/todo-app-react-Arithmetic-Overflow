@@ -39,7 +39,7 @@ const TaskList = ({
     </div>
 
   return (
-    <Container style={{'marginBottom': '4vh'}}>
+    <Container style={{'marginBottom': '4vh', 'marginTop': '4vh'}}>
       <Row>
         <Col>
           <h1 style={{'marginBottom': '2vh'}}>

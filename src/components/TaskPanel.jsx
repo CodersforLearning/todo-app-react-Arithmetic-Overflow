@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import TaskList from './TaskList';
 import AdditionPanel from './AdditionPanel';
 
-import { Container, Row, Col } from 'react-bootstrap';
-
-
 const TaskPanel = ({ className }) => {
   const [taskList, setTaskList] =
     useState([]);
