@@ -6,7 +6,7 @@ const Task = ({ className, taskTitle, onHoverColour }) => {
 
     return (
     	<span
-    		style={{'cursor': 'pointer', 'color': colour}}
+    		style={{'cursor': 'pointer', 'color': colour, 'fontSize': '14pt'}}
     		onMouseEnter={() => setColour(onHoverColour)}
     		onMouseLeave={() => setColour(passiveColour)}
     	>

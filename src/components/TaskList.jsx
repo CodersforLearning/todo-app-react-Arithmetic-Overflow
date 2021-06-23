@@ -25,13 +25,28 @@ const TaskList = ({
     [completedList]
   );
 
+  const verticalLine =
+    <div
+      style={{
+        'borderLeft': '2px solid gray',
+        'height': '80%',
+        'marginTop': '10%',
+        'justifyContent': 'center',
+        'marginLeft': '45%',
+        'opacity': '0.25'
+      }}
+    >
+    </div>
+
   return (
     <Container style={{'marginBottom': '4vh'}}>
       <Row>
         <Col>
-          <h1 style={{'marginBottom': '0'}}>
+          <h1 style={{'marginBottom': '2vh'}}>
             Tasks Remaining:
           </h1>
+
+          <hr />
 
           {
             (tasks.length > 0) &&
@@ -70,9 +85,15 @@ const TaskList = ({
         </Col>
 
         <Col>
-          <h1 style={{'marginBottom': '0'}}>
+          {verticalLine}
+        </Col>
+
+        <Col>
+          <h1 style={{'marginBottom': '2vh'}}>
             Tasks Completed:
           </h1>
+
+          <hr />
 
           {
             (completed.length > 0) &&
@@ -109,6 +130,8 @@ const TaskList = ({
           }
         </Col>
       </Row>
+
+      <hr />
     </Container>
   );
 };
