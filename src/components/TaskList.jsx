@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import Task from './Task';
 
-const TaskList = ({ className, taskList, deleteTaskIndex }) => {
+const TaskList = ({
+  className,
+  taskList,
+  deleteTaskIndex,
+  completedList,
+  markTaskIndexCompleted
+}) => {
   const [tasks, setTasks] = useState(taskList);
 
   useEffect(
@@ -10,34 +16,35 @@ const TaskList = ({ className, taskList, deleteTaskIndex }) => {
     [taskList]
   );
 
-  const header = 
+  const [completed, setCompleted] = useState(completedList);
+
+  useEffect(
+    () => {setCompleted(completedList)},
+    [completedList]
+  );
+
+  const headerRemaining = 
     <h1 style={{'marginBottom': '0'}}>
       Tasks Remaining:
     </h1>;
 
-  if(tasks.length === 0) {
-    return (
-      <div>
-      {header}
-      <h5>
-        No Tasks Currently Remaining...
-      </h5>
-      </div>
-    );
-  }
+  const headerCompleted =
+    <h1 style={{'marginBottom': '0'}}>
+      Tasks Completed
+    </h1>;
 
-  else{
-    return (
-      <div>
-      {header}
-        <ul
-          style={{
-            'justifyContent': 'left',
-            'textAlign': 'left',
-            'display': 'inline-block'
-          }}
-        >
-          {
+  return (
+    <div>
+    {headerRemaining}
+      <ul
+        style={{
+          'justifyContent': 'left',
+          'textAlign': 'left',
+          'display': 'inline-block'
+        }}
+      >
+        {
+          (tasks.length > 0) &&
             tasks.map(
               (taskTitle, i) =>
                 <li 
@@ -47,11 +54,18 @@ const TaskList = ({ className, taskList, deleteTaskIndex }) => {
                   <Task taskTitle={taskTitle} />
                 </li>
             )
-          }
-        </ul>
-      </div>
-    );
-  }
+        }
+
+        {
+          (tasks.length === 0) &&
+            <h5>
+              No Tasks Currently Remaining...
+            </h5>
+        }
+
+      </ul>
+    </div>
+  );
 };
 
 export default TaskList;

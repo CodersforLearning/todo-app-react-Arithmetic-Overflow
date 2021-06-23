@@ -7,7 +7,14 @@ const TaskPanel = ({ className }) => {
   const [taskList, setTaskList] =
     useState([]);
 
-  const appendTask = newTask => setTaskList([...taskList, newTask]);
+  const [completedList, setCompletedList] =
+    useState([]);
+
+  const appendTask = newTask =>
+    setTaskList([...taskList, newTask]);
+
+  const appendCompleted = newCompleted =>
+    setCompletedList([...completedList, newCompleted]);
 
   const deleteTaskIndex = i => 
     setTaskList(
@@ -17,9 +24,18 @@ const TaskPanel = ({ className }) => {
       ]
     );
 
+  const markTaskIndexCompleted = i => {
+    appendCompleted(taskList[i]);
+    deleteTaskIndex(i);
+  }
+
   return (
     <>
-      <TaskList taskList={taskList} deleteTaskIndex={deleteTaskIndex} />
+      <TaskList
+        taskList={taskList}
+        deleteTaskIndex={deleteTaskIndex}
+        markTaskIndexCompleted={markTaskIndexCompleted}
+      />
       <AdditionPanel appendTask={appendTask} />
     </>
   );
