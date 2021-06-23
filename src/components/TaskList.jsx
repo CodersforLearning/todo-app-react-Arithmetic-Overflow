@@ -5,7 +5,7 @@ import Task from './Task';
 const TaskList = ({
   className,
   taskList,
-  deleteTaskIndex,
+  deleteCompletedIndex,
   completedList,
   markTaskIndexCompleted
 }) => {
@@ -23,19 +23,12 @@ const TaskList = ({
     [completedList]
   );
 
-  const headerRemaining = 
-    <h1 style={{'marginBottom': '0'}}>
-      Tasks Remaining:
-    </h1>;
-
-  const headerCompleted =
-    <h1 style={{'marginBottom': '0'}}>
-      Tasks Completed
-    </h1>;
-
   return (
     <div>
-    {headerRemaining}
+      <h1 style={{'marginBottom': '0'}}>
+        Tasks Remaining:
+      </h1>
+
       <ul
         style={{
           'justifyContent': 'left',
@@ -49,9 +42,12 @@ const TaskList = ({
               (taskTitle, i) =>
                 <li 
                   key={i + taskTitle}
-                  onClick={() => deleteTaskIndex(i)}
+                  onClick={() => markTaskIndexCompleted(i)}
                 >
-                  <Task taskTitle={taskTitle} />
+                  <Task
+                    taskTitle={taskTitle}
+                    onHoverColour='green'
+                  />
                 </li>
             )
         }
@@ -62,8 +58,36 @@ const TaskList = ({
               No Tasks Currently Remaining...
             </h5>
         }
-
       </ul>
+
+      <h1 style={{'marginBottom': '0'}}>
+        Tasks Completed:
+      </h1>
+
+      <ul>
+      {
+        (completed.length > 0) &&
+          completed.map(
+            (taskTitle, i) =>
+              <li
+                key={i + taskTitle}
+                onClick={() => deleteCompletedIndex(i)}
+              >
+                <Task
+                  taskTitle={taskTitle}
+                  onHoverColour='red'
+                />
+              </li>
+          )
+      }
+      </ul>
+
+      {
+        (completed.length === 0) &&
+          <h5>
+            No Tasks Currently completed...
+          </h5>
+      }
     </div>
   );
 };

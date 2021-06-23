@@ -24,6 +24,14 @@ const TaskPanel = ({ className }) => {
       ]
     );
 
+  const deleteCompletedIndex = i =>
+    setCompletedList(
+      [
+        ...completedList.slice(0, i),
+        ...completedList.slice(i+1)
+      ]
+    );
+
   const markTaskIndexCompleted = i => {
     appendCompleted(taskList[i]);
     deleteTaskIndex(i);
@@ -33,7 +41,8 @@ const TaskPanel = ({ className }) => {
     <>
       <TaskList
         taskList={taskList}
-        deleteTaskIndex={deleteTaskIndex}
+        completedList={completedList}
+        deleteCompletedIndex={deleteCompletedIndex}
         markTaskIndexCompleted={markTaskIndexCompleted}
       />
       <AdditionPanel appendTask={appendTask} />
