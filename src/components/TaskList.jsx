@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Container, Row, Col } from 'react-bootstrap';
+
 import Task from './Task';
 
 const TaskList = ({
@@ -24,71 +26,90 @@ const TaskList = ({
   );
 
   return (
-    <div>
-      <h1 style={{'marginBottom': '0'}}>
-        Tasks Remaining:
-      </h1>
+    <Container style={{'marginBottom': '4vh'}}>
+      <Row>
+        <Col>
+          <h1 style={{'marginBottom': '0'}}>
+            Tasks Remaining:
+          </h1>
 
-      <ul
-        style={{
-          'justifyContent': 'left',
-          'textAlign': 'left',
-          'display': 'inline-block'
-        }}
-      >
-        {
-          (tasks.length > 0) &&
-            tasks.map(
-              (taskTitle, i) =>
-                <li 
-                  key={i + taskTitle}
-                  onClick={() => markTaskIndexCompleted(i)}
-                >
-                  <Task
-                    taskTitle={taskTitle}
-                    onHoverColour='green'
-                  />
-                </li>
-            )
-        }
-
-        {
-          (tasks.length === 0) &&
-            <h5>
-              No Tasks Currently Remaining...
-            </h5>
-        }
-      </ul>
-
-      <h1 style={{'marginBottom': '0'}}>
-        Tasks Completed:
-      </h1>
-
-      <ul>
-      {
-        (completed.length > 0) &&
-          completed.map(
-            (taskTitle, i) =>
-              <li
-                key={i + taskTitle}
-                onClick={() => deleteCompletedIndex(i)}
+          {
+            (tasks.length > 0) &&
+              <ul
+                style={{
+                  'justifyContent': 'left',
+                  'textAlign': 'left',
+                  'display': 'inline-block',
+                  'marginBottom': '0'
+                }}
               >
-                <Task
-                  taskTitle={taskTitle}
-                  onHoverColour='red'
-                />
-              </li>
-          )
-      }
-      </ul>
+              {
+                tasks.map(
+                  (taskTitle, i) =>
+                    <li 
+                      key={i + taskTitle}
+                      onClick={() => markTaskIndexCompleted(i)}
+                    >
+                      <Task
+                        taskTitle={taskTitle}
+                        onHoverColour='green'
+                      />
+                    </li>
+                )
+              }
+              </ul>
+          }
 
-      {
-        (completed.length === 0) &&
-          <h5>
-            No Tasks Currently completed...
-          </h5>
-      }
-    </div>
+          {
+            (tasks.length === 0) &&
+              <h5>
+                No Tasks Currently Remaining...
+              </h5>
+          }
+
+        </Col>
+
+        <Col>
+          <h1 style={{'marginBottom': '0'}}>
+            Tasks Completed:
+          </h1>
+
+          {
+            (completed.length > 0) &&
+              <ul
+                style={{
+                  'justifyContent': 'left',
+                  'textAlign': 'left',
+                  'display': 'inline-block',
+                  'marginBottom': '0'
+                }}
+              >
+                {
+                  completed.map(
+                    (taskTitle, i) =>
+                      <li
+                        key={i + taskTitle}
+                        onClick={() => deleteCompletedIndex(i)}
+                      >
+                        <Task
+                          taskTitle={taskTitle}
+                          onHoverColour='red'
+                        />
+                      </li>
+                  )
+                }
+              </ul>
+          }
+
+          {
+            (completed.length === 0) &&
+              <h5>
+                No Tasks Currently completed...
+              </h5>
+          }
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
